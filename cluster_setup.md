@@ -2,7 +2,7 @@
 
 ## Requesting a cluster account
 
-## Making an SSH key on the cluster ##
+## Making an SSH key on the cluster
 
 I suggest making the SSH key on the cluster. You can do this by logging into the cluster and running
 ```
@@ -56,7 +56,7 @@ ssh cluster
 ```
 without having to enter your password.
 
-## Setting up SSH on MacOSX/Linux for use by VC Code ##
+## Setting up SSH on MacOSX/Linux for use by VC Code
 
 Linux and MacOSX already have SSH installed so you only have to modify the config file. Edit ~/.ssh/config
 (note this file might not already exists but that's ok) and add the following lines, making sure to change
