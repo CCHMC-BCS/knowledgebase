@@ -6,11 +6,13 @@ Email help-cluster@bmi.cchmc.org to resquest a HPC account. Be sure to ask for p
 
 ## Making an SSH key on the cluster
 
-I suggest making the SSH key on the cluster. You can do this by logging into the cluster and running
+I suggest making the SSH key on the cluster. This will let you, and your tools, connect to the cluster and cluster nodes without having to enter your password.
+
+You can make an SSH key by logging into the cluster and running
 ```
 ssh-keygen
 ```
-On the command line. Use the default location for the key: .ssh/id_rsa. I usually use an empty passphrase. You'll
+on the command line. Use the default location for the key: .ssh/id_rsa. I usually use an empty passphrase. You'll
 download this key to your local machine, linking the computers together, in one of the next two sections
 depending on your operating system.
 
@@ -19,7 +21,7 @@ Then you need to tell the server that people with this key are authorized to con
 cat ~/.ssh/id_rsa.pub >>~/.ssh/authorized_keys
 ```
 
-## Setting up SSH on Windows for use by VC Code ##
+## Setting up SSH on Windows
 
 You'll need install the OpenSSH client so that you can connect to the cluster. Follow the instructions here:
 
@@ -29,20 +31,14 @@ Then open the Command Prompt (hit the windows key, type "cmd", and hit enter) an
 ```
 mkdir .ssh
 ```
-Then, start Visual Studio Code to edit the SSH config file
-```
-cd
-cd .ssh
-code config
-```
-And add the following lines, making sure to change *both* instances YOURUSERNAME to your cluster username, before saving the file:
+Then to edit the SSH config file ```.ssh/config``` and and add the following lines, making sure to change *both* instances of YOURUSERNAME to your cluster username, before saving the file:
 ```
 Host *
     ServerAliveInterval 60
 Host ssh cchmc
     HostName ssh.research.cchmc.org
     User YOURUSERNAME
-Host bmiclusterp bmiclusterp2 cluster
+Host bmiclusterp bmiclusterp2 cluster bmiclusterp.chmcres.cchmc.org
     Hostname bmiclusterp.chmcres.cchmc.org
     User YOURUSERNAME
     ProxyCommand C:\Windows\System32\OpenSSH\ssh.exe -q ssh nc -w 180 %h %p
@@ -58,7 +54,7 @@ ssh cluster
 ```
 without having to enter your password.
 
-## Setting up SSH on MacOSX/Linux for use by VC Code
+## Setting up SSH on MacOSX/Linux
 
 Linux and MacOSX already have SSH installed so you only have to modify the config file. Edit ~/.ssh/config
 (note this file might not already exists but that's ok) and add the following lines, making sure to change
