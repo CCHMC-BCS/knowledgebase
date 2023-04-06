@@ -2,6 +2,8 @@
 
 ## Requesting a cluster account
 
+Email help-cluster@bmi.cchmc.org to resquest a HPC account. Be sure to ask for proxy access so that you and your programs can connect to the outside world, to download packages and datasets.
+
 ## Making an SSH key on the cluster
 
 I suggest making the SSH key on the cluster. You can do this by logging into the cluster and running
